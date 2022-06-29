@@ -12,6 +12,7 @@ import { Inject } from '@angular/core';
 export class DialogComponent implements OnInit {
 
   freshnessList = ['Brand New', 'Second Hand', 'Refurbished'];
+  categories = ['Fruits', 'Vegetables', 'Electronic'];
   productForm !: FormGroup;
 
   actionBtn : string = "Save";
