@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   openDialog() {
     this.dialog.open(DialogComponent, {
       width: "30%"
-    }).afterClosed().subscribe(val=>{
+    }).afterClosed().subscribe((val: string)=>{
       if(val === 'save'){
         this.getAllProduct();
       }
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   getAllProduct() {
     this.api.getProduct()
       .subscribe({
-        next: (res) => {
+        next: (res: any[] | undefined) => {
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '30%',
       data:row
-    }).afterClosed().subscribe(val=>{
+    }).afterClosed().subscribe((val: string)=>{
       if(val === 'update'){
         this.getAllProduct();
       }
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
 
   deleteProduct(id:number){
     this.api.deleteProduct(id).subscribe({
-      next:(res)=>{
+      next:(res: any)=>{
         alert("Product Deleted Successfully.");
         this.getAllProduct();
       },
